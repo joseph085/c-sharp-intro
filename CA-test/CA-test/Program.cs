@@ -63,8 +63,8 @@
             else
             {
 
-                Console.WriteLine("Cavan");
                 Console.WriteLine("Yasli");
+                Console.WriteLine("Salamlar");
             }
         }
     }
