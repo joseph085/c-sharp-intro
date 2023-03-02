@@ -65,6 +65,16 @@
 
                 Console.WriteLine("Yasli");
                 Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
+                Console.WriteLine("Salamlar");
             }
         }
     }
