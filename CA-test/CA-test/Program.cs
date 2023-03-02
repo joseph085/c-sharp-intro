@@ -52,6 +52,7 @@
             }
 
 
+
             if (firstPersonAge <= 25)
             {
                 Console.WriteLine("Cavan");
@@ -75,6 +76,12 @@
                 Console.WriteLine("Salamlar");
                 Console.WriteLine("Salamlar");
                 Console.WriteLine("Salamlar");
+            }
+
+
+            if (true)
+            {
+                int number = 23;
             }
         }
     }
