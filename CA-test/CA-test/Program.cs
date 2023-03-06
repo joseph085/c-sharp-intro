@@ -6,7 +6,7 @@
         {
             string personName = "Mahmood";
             string personLastName = "Garibov";
-            int personAge = 34;
+            int personAge = 32;
             string personFullName = personName + " " + personLastName; //string Concantenation
 
             Console.WriteLine("Full name : " + personFullName);
