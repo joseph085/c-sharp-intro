@@ -4,14 +4,16 @@
     {
         static void Main(string[] args)
         {
-            //Defining values step
-            string personName = "Mahmood ";
+            string personName = "Mahmood";
             string personLastName = "Garibov";
             int personAge = 34;
             string personFullName = personName + " " + personLastName; //string Concantenation
 
             Console.WriteLine("Full name : " + personFullName);
             Console.WriteLine("Age : " + personAge);
+
+
+            Console.WriteLine(bool.Parse(Console.ReadLine()));
         }
     }
 }
