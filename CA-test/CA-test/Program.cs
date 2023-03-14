@@ -28,41 +28,42 @@
 
                 if (command == SHOW_CURRENCY_RATES_COMMAND)
                 {
-                    int idx = 0;
-
-                    while (idx < currencyRates.Length)
+                    for (int idx = 0; idx < currencyRates.Length; idx++)
                     {
                         Console.WriteLine($"Currency : {currencies[idx]}, Rate : {currencyRates[idx]}");
-                        idx++;
                     }
+
+                    //int idx = 0;
+
+                    //while (idx < currencyRates.Length)
+                    //{
+                    //    Console.WriteLine($"Currency : {currencies[idx]}, Rate : {currencyRates[idx]}");
+                    //    idx++;
+                    //}
                 }
                 else if (command == FIND_CURRENCY_RATE_BY_CODE)
                 {
+                    bool isCurrencyExists = false; //flag
                     Console.Write("Pls enter code : ");
                     string specifiedCode = Console.ReadLine();
-                    bool isCurrencyExists = false;
-                    int idx = 0;
 
-                    while (idx < currencies.Length)
+                    for (int i = 0; i < currencies.Length; i++)
                     {
-                        string currentCode = currencies[idx];
-                        decimal curretCodeRate = currencyRates[idx];
+                        string currentCode = currencies[i];
+                        decimal curretCodeRate = currencyRates[i];
 
-                        if (currencies[idx] == specifiedCode)
+                        if (currencies[i] == specifiedCode)
                         {
                             Console.WriteLine($"Code : {currentCode}, rate : {curretCodeRate} ");
-                            isCurrencyExists = true;
+                            isCurrencyExists = true; //update flag
                             break;
                         }
-
-                        idx++;
                     }
 
-                    if (!isCurrencyExists)
+                    if (!isCurrencyExists) // check flag value
                     {
                         Console.WriteLine("Specified code not found");
                     }
-
                 }
                 else if (command == CAULCULATE_AMOUNT_BY_CURRENCY_RATE_BY_CODE)
                 {
@@ -71,14 +72,12 @@
 
                     Console.Write("Pls enter code : ");
                     string specifiedCode = Console.ReadLine();
-
                     bool isCurrencyExists = false;
-                    int idx = 0;
 
-                    while (idx < currencies.Length)
+                    for (int i = 0; i < currencies.Length; i++)
                     {
-                        string currentCode = currencies[idx];
-                        decimal curretCodeRate = currencyRates[idx];
+                        string currentCode = currencies[i];
+                        decimal curretCodeRate = currencyRates[i];
 
                         if (currentCode == specifiedCode)
                         {
@@ -86,10 +85,7 @@
                             isCurrencyExists = true;
                             break;
                         }
-
-                        idx++;
                     }
-
                     if (!isCurrencyExists)
                     {
                         Console.WriteLine("Specified code not found");
