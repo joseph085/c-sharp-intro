@@ -65,26 +65,17 @@
         }
         public static void ExecuteFindCurrencyRateByCodeCommand(decimal[] currencyRates, string[] currencies)
         {
-            bool isCurrencyExists = false; //flag
             Console.Write("Pls enter code : ");
-            string specifiedCode = Console.ReadLine();
+            string currencyCode = Console.ReadLine();
 
-            for (int i = 0; i < currencies.Length; i++)
+            decimal currencyRate = FindCurrenyRateByCode(currencyRates, currencies, currencyCode);
+            if (currencyRate == -1)
             {
-                string currentCode = currencies[i];
-                decimal curretCodeRate = currencyRates[i];
-
-                if (currencies[i] == specifiedCode)
-                {
-                    Console.WriteLine($"Code : {currentCode}, rate : {curretCodeRate} ");
-                    isCurrencyExists = true; //update flag
-                    break;
-                }
+                Console.WriteLine("Alpha3 code not found");
             }
-
-            if (!isCurrencyExists) // check flag value
+            else
             {
-                Console.WriteLine("Specified code not found");
+                Console.WriteLine($"Currency code : {currencyCode}, rate : {currencyRate}");
             }
         }
         public static void ExecuteCalculateAmountByCurrencyRateByCode(decimal[] currencyRates, string[] currencies)
@@ -93,29 +84,38 @@
             decimal amount = Convert.ToDecimal(Console.ReadLine());
 
             Console.Write("Pls enter code : ");
-            string specifiedCode = Console.ReadLine();
-            bool isCurrencyExists = false;
+            string currencyCode = Console.ReadLine();
 
-            for (int i = 0; i < currencies.Length; i++)
+            decimal currencyRate = FindCurrenyRateByCode(currencyRates, currencies, currencyCode);
+            if (currencyRate == -1)
             {
-                string currentCode = currencies[i];
-                decimal curretCodeRate = currencyRates[i];
+                Console.WriteLine("Alpha3 code not found");
+            }
+            else
+            {
+                Console.WriteLine($"Amount in target currency rate : {amount / currencyRate}");
+            }
 
-                if (currentCode == specifiedCode)
-                {
-                    Console.WriteLine($"Amount in {currentCode} :  {amount / curretCodeRate}");
-                    isCurrencyExists = true;
-                    break;
-                }
-            }
-            if (!isCurrencyExists)
-            {
-                Console.WriteLine("Specified code not found");
-            }
         }
         public static void ExecuteExitCommand()
         {
             Console.WriteLine("Thanks for using, bye-bye");
+        }
+
+
+        public static decimal FindCurrenyRateByCode(decimal[] argCurrencyRates, string[] argCurrencies, string argSpecifiedCode)
+        {
+            decimal DEFAULT_CURRENCY_RATE = -1;
+
+            for (int i = 0; i < argCurrencies.Length; i++)
+            {
+                if (argCurrencies[i] == argSpecifiedCode)
+                {
+                    return argCurrencyRates[i];
+                }
+            }
+
+            return DEFAULT_CURRENCY_RATE;
         }
     }
 }
