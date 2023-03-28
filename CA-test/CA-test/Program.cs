@@ -28,73 +28,19 @@
 
                 if (command == SHOW_CURRENCY_RATES_COMMAND)
                 {
-                    for (int idx = 0; idx < currencyRates.Length; idx++)
-                    {
-                        Console.WriteLine($"Currency : {currencies[idx]}, Rate : {currencyRates[idx]}");
-                    }
-
-                    //int idx = 0;
-
-                    //while (idx < currencyRates.Length)
-                    //{
-                    //    Console.WriteLine($"Currency : {currencies[idx]}, Rate : {currencyRates[idx]}");
-                    //    idx++;
-                    //}
+                    ExecuteShowCurrencyRatesCommand(currencyRates, currencies); //METHOD CALL
                 }
                 else if (command == FIND_CURRENCY_RATE_BY_CODE)
                 {
-                    bool isCurrencyExists = false; //flag
-                    Console.Write("Pls enter code : ");
-                    string specifiedCode = Console.ReadLine();
-
-                    for (int i = 0; i < currencies.Length; i++)
-                    {
-                        string currentCode = currencies[i];
-                        decimal curretCodeRate = currencyRates[i];
-
-                        if (currencies[i] == specifiedCode)
-                        {
-                            Console.WriteLine($"Code : {currentCode}, rate : {curretCodeRate} ");
-                            isCurrencyExists = true; //update flag
-                            break;
-                        }
-                    }
-
-                    if (!isCurrencyExists) // check flag value
-                    {
-                        Console.WriteLine("Specified code not found");
-                    }
+                    ExecuteFindCurrencyRateByCodeCommand(currencyRates, currencies);
                 }
                 else if (command == CAULCULATE_AMOUNT_BY_CURRENCY_RATE_BY_CODE)
                 {
-                    Console.Write("Pls enter amount in AZN : ");
-                    decimal amount = Convert.ToDecimal(Console.ReadLine());
-
-                    Console.Write("Pls enter code : ");
-                    string specifiedCode = Console.ReadLine();
-                    bool isCurrencyExists = false;
-
-                    for (int i = 0; i < currencies.Length; i++)
-                    {
-                        string currentCode = currencies[i];
-                        decimal curretCodeRate = currencyRates[i];
-
-                        if (currentCode == specifiedCode)
-                        {
-                            Console.WriteLine($"Amount in {currentCode} :  {amount / curretCodeRate}");
-                            isCurrencyExists = true;
-                            break;
-                        }
-                    }
-                    if (!isCurrencyExists)
-                    {
-                        Console.WriteLine("Specified code not found");
-                    }
-
+                    ExecuteCalculateAmountByCurrencyRateByCode(currencyRates, currencies);
                 }
                 else if (command == EXIT_COMMAND)
                 {
-                    Console.WriteLine("Thanks for using, bye-bye");
+                    ExecuteExitCommand();
 
                     break;
                 }
@@ -104,6 +50,72 @@
                 }
             }
 
+        }
+
+
+        /// <summary>
+        /// Executes show currency rates functionality
+        /// </summary>
+        public static void ExecuteShowCurrencyRatesCommand(decimal[] currencyRates, string[] currencies)
+        {
+            for (int idx = 0; idx < currencyRates.Length; idx++)
+            {
+                Console.WriteLine($"Currency : {currencies[idx]}, Rate : {currencyRates[idx]}");
+            }
+        }
+        public static void ExecuteFindCurrencyRateByCodeCommand(decimal[] currencyRates, string[] currencies)
+        {
+            bool isCurrencyExists = false; //flag
+            Console.Write("Pls enter code : ");
+            string specifiedCode = Console.ReadLine();
+
+            for (int i = 0; i < currencies.Length; i++)
+            {
+                string currentCode = currencies[i];
+                decimal curretCodeRate = currencyRates[i];
+
+                if (currencies[i] == specifiedCode)
+                {
+                    Console.WriteLine($"Code : {currentCode}, rate : {curretCodeRate} ");
+                    isCurrencyExists = true; //update flag
+                    break;
+                }
+            }
+
+            if (!isCurrencyExists) // check flag value
+            {
+                Console.WriteLine("Specified code not found");
+            }
+        }
+        public static void ExecuteCalculateAmountByCurrencyRateByCode(decimal[] currencyRates, string[] currencies)
+        {
+            Console.Write("Pls enter amount in AZN : ");
+            decimal amount = Convert.ToDecimal(Console.ReadLine());
+
+            Console.Write("Pls enter code : ");
+            string specifiedCode = Console.ReadLine();
+            bool isCurrencyExists = false;
+
+            for (int i = 0; i < currencies.Length; i++)
+            {
+                string currentCode = currencies[i];
+                decimal curretCodeRate = currencyRates[i];
+
+                if (currentCode == specifiedCode)
+                {
+                    Console.WriteLine($"Amount in {currentCode} :  {amount / curretCodeRate}");
+                    isCurrencyExists = true;
+                    break;
+                }
+            }
+            if (!isCurrencyExists)
+            {
+                Console.WriteLine("Specified code not found");
+            }
+        }
+        public static void ExecuteExitCommand()
+        {
+            Console.WriteLine("Thanks for using, bye-bye");
         }
     }
 }
