@@ -3,7 +3,7 @@
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {   
             string[] currencies = { "USD", "EUR", "RUB" };
             decimal[] currencyRates = { 1.70M, 1.82M, 0.02M };
 
@@ -80,8 +80,16 @@
         }
         public static void ExecuteCalculateAmountByCurrencyRateByCode(decimal[] currencyRates, string[] currencies)
         {
-            Console.Write("Pls enter amount in AZN : ");
-            decimal amount = Convert.ToDecimal(Console.ReadLine());
+            decimal amount = 0;
+            string amountInput;
+
+            do
+            {
+                Console.Write("Pls enter amount : ");
+                amountInput = Console.ReadLine();
+
+            } while (!TryConvert(amountInput, out amount));
+
 
             Console.Write("Pls enter code : ");
             string currencyCode = Console.ReadLine();
@@ -102,7 +110,6 @@
             Console.WriteLine("Thanks for using, bye-bye");
         }
 
-
         public static decimal FindCurrenyRateByCode(decimal[] argCurrencyRates, string[] argCurrencies, string argSpecifiedCode)
         {
             decimal DEFAULT_CURRENCY_RATE = -1;
@@ -116,6 +123,23 @@
             }
 
             return DEFAULT_CURRENCY_RATE;
+        }
+
+
+        static bool TryConvert(string input, out decimal amount)
+        {
+            decimal DEFAULT_AMOUNT = -1;
+
+            try
+            {
+                amount = int.Parse(input);
+                return true;
+            }
+            catch
+            {
+                amount = DEFAULT_AMOUNT;
+                return false;
+            }
         }
     }
 }
