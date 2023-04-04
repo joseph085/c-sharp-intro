@@ -4,34 +4,27 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(GetAndValidatePhoneNumber());
+            GetAndValidateAge();
 
+            Console.WriteLine("Person's count : ");
+            int count = int.Parse(Console.ReadLine());
 
-            //Console.WriteLine(Substring(temp, 5, 2));
+            while (count > 0)
+            {
+                string firstName = GetAndValidateFirstName();
+                string lastName = GetAndValidateLastName();
+                string fatherName = GetAndValidateFatherName();
+                int age = GetAndValidateAge();
+                string pin = GetAndValidatePin();
+                string phoneNumber = GetAndValidatePhoneNumber();
+                string position = GetAndValidatePosition();
+                decimal monthlySalary = GetAndValidateMonthlySalary();
 
-            //Console.WriteLine(IsValidPin("123456A"));
+                Console.WriteLine($"Məlumat (<{firstName}>, <{lastName}>) Sistemə əlavə olundu");
 
-            //Console.WriteLine("Person's count : ");
-            //int count = int.Parse(Console.ReadLine());
-
-            //while (count > 0)
-            //{
-            //    string firstName = GetAndValidateFirstName();
-            //    string lastName = GetAndValidateLastName();
-            //    string fatherName = GetAndValidateFatherName();
-            //    int age = GetAndValidateAge();
-            //    string pin = GetAndValidatePin();
-            //    string phoneNumber = GetAndValidatePhoneNumber();
-            //    //string position = GetAndValidatePosition();
-            //    //decimal monthlySalary = GetAndValidateMonthlySalary();
-
-            //    Console.WriteLine($"Məlumat (<{firstName}>, <{lastName}>) Sistemə əlavə olundu");
-
-            //    count--;
-            //}
+                count--;
+            }
         }
-
-
 
         #region First name
 
@@ -110,13 +103,18 @@
 
         #region Age
 
+
+
         static int GetAndValidateAge()
         {
-
             while (true)
             {
                 Console.WriteLine("Pls enter age : ");
-                int age = int.Parse(Console.ReadLine()!);
+                var isParsable = TryParse(Console.ReadLine(), out int age);
+                if (!isParsable)
+                {
+                    continue;
+                }
 
                 //Early return 
                 if (IsLengthBetween(age, 18, 65))
@@ -154,11 +152,6 @@
             {
                 return false;
             }
-
-            //71ERAJ
-
-
-
 
             bool isUpperLetter = false;
             bool isDigit = false;
@@ -212,28 +205,105 @@
                 return false;
             }
 
-            string portion = SubstringFromEnd(phoneNumber, 7);
-
-            if (!IsDigit(portion))
-            {
-                return false;
-            }
-
-            //+994503144847
+            string phoneNumberPrefix = null;
 
             foreach (string prefix in prefixes)
             {
                 if (IsStartsWith(phoneNumber, prefix))
                 {
-                    return true;
+                    phoneNumberPrefix = prefix;
                 }
             }
 
-            return false; ;
+            //+99450
+
+            if (phoneNumberPrefix == null)
+                return false;
+
+            string substring = Substring(phoneNumber, phoneNumberPrefix.Length, phoneNumber.Length - 1);
+
+            if (!IsDigit(substring))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #endregion
 
+        #region Position
+
+        static string GetAndValidatePosition()
+        {
+            while (true)
+            {
+                Console.WriteLine("Pls enter position : ");
+                string position = Console.ReadLine()!;
+
+                if (IsValidPhoneNumber(position))
+                {
+                    return position;
+                }
+
+                Console.WriteLine("Some information is not correnct");
+            }
+        }
+        static bool IsValidPosition(string position)
+        {
+            //if (position == "HR")
+            //{
+            //    return true;
+            //}
+            //else if(position == "Audit")
+            //{
+            //    return true;
+            //}
+            //else if (position == "Engineer ")
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+
+            switch (position)
+            {
+                case "HR":
+                case "Audit":
+                case "Engineer":
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+
+        #endregion
+
+        #region Monthly salary
+
+        static decimal GetAndValidateMonthlySalary()
+        {
+
+            while (true)
+            {
+                Console.WriteLine("Pls enter monthly salary : ");
+                decimal amount = decimal.Parse(Console.ReadLine()!);
+
+                //Early return 
+                if (IsLengthBetween(amount, 1500, 5000))
+                {
+                    return amount;
+                }
+
+                Console.WriteLine("Some information is not correnct");
+            }
+        }
+
+        #endregion
 
         #region Common
 
@@ -266,6 +336,19 @@
 
         #region Utility
 
+        public static bool TryParse(string text, out int number)
+        {
+            try
+            {
+                number = int.Parse(text);
+                return true;
+            }
+            catch
+            {
+                number = -1;
+                return false;
+            }
+        }
         public static bool IsStartsWith(string text, string startText)
         {
             if (startText.Length > text.Length)
@@ -283,7 +366,6 @@
 
             return true;
         }
-
         public static string Substring(string text, int startIdx, int endIdx)
         {
             string subString = "";
@@ -324,6 +406,10 @@
             return reversed;
         }
 
+        public static bool IsLengthBetween(decimal number, decimal min, decimal max)
+        {
+            return number > min && number < max;
+        }
         public static bool IsLengthBetween(string text, int min, int max)
         {
             return text.Length > min && text.Length < max;
