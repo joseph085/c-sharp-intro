@@ -1,15 +1,15 @@
 ﻿namespace HRManagementSystem
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            GetAndValidateAge();
-
             Console.WriteLine("Person's count : ");
-            int count = int.Parse(Console.ReadLine());
+            int count = int.Parse(Console.ReadLine()!);
 
-            while (count > 0)
+            int i = 0;
+
+            while (i < count)
             {
                 string firstName = GetAndValidateFirstName();
                 string lastName = GetAndValidateLastName();
@@ -18,11 +18,12 @@
                 string pin = GetAndValidatePin();
                 string phoneNumber = GetAndValidatePhoneNumber();
                 string position = GetAndValidatePosition();
-                decimal monthlySalary = GetAndValidateMonthlySalary();
+                decimal monthlySalary = GetAndValidateMonthlySalary(); 
+               
 
-                Console.WriteLine($"Məlumat (<{firstName}>, <{lastName}>) Sistemə əlavə olundu");
+                Console.WriteLine($"Məlumat Sistemə əlavə olundu");
 
-                count--;
+                i++;
             }
         }
 
@@ -35,10 +36,10 @@
                 Console.WriteLine("Pls enter first name : ");
                 string firstName = Console.ReadLine()!;
 
-                if (!IsValidFirstName(firstName))
-                {
-                    Console.WriteLine("Some information is not correnct");
-                }
+                if (IsValidFirstName(firstName))
+                    return firstName;
+
+                Console.WriteLine("Some information is not correnct");
             }
         }
         static bool IsValidFirstName(string firstName)
@@ -58,12 +59,12 @@
             while (true)
             {
                 Console.WriteLine("Pls enter last name : ");
-                string firstName = Console.ReadLine()!;
+                string lastName = Console.ReadLine()!;
 
-                if (!IsValidLastName(firstName))
-                {
-                    Console.WriteLine("Some information is not correnct");
-                }
+                if (IsValidLastName(lastName))
+                    return lastName;
+
+                Console.WriteLine("Some information is not correnct");
             }
         }
         static bool IsValidLastName(string lastName)
@@ -85,10 +86,10 @@
                 Console.WriteLine("Pls enter father name : ");
                 string fatherName = Console.ReadLine()!;
 
-                if (!IsValidLastName(fatherName))
-                {
-                    Console.WriteLine("Some information is not correnct");
-                }
+                if (IsValidFatherName(fatherName))
+                    return fatherName;
+
+                Console.WriteLine("Some information is not correnct");
             }
         }
         static bool IsValidFatherName(string fatherName)
@@ -103,14 +104,12 @@
 
         #region Age
 
-
-
         static int GetAndValidateAge()
         {
             while (true)
             {
                 Console.WriteLine("Pls enter age : ");
-                var isParsable = TryParse(Console.ReadLine(), out int age);
+                var isParsable = TryParse(Console.ReadLine()!, out int age);
                 if (!isParsable)
                 {
                     continue;
@@ -118,14 +117,11 @@
 
                 //Early return 
                 if (IsLengthBetween(age, 18, 65))
-                {
                     return age;
-                }
 
                 Console.WriteLine("Some information is not correnct");
             }
         }
-
 
         #endregion
 
@@ -138,10 +134,10 @@
                 Console.WriteLine("Pls enter pin : ");
                 string pin = Console.ReadLine()!;
 
-                if (!IsValidPin(pin))
-                {
-                    Console.WriteLine("Some information is not correnct");
-                }
+                if (IsValidPin(pin))
+                    return pin;
+                
+                Console.WriteLine("Some information is not correnct");
             }
         }
         static bool IsValidPin(string pin)
@@ -187,9 +183,7 @@
                 string phoneNumber = Console.ReadLine()!;
 
                 if (IsValidPhoneNumber(phoneNumber))
-                {
                     return phoneNumber;
-                }
 
                 Console.WriteLine("Some information is not correnct");
             }
@@ -241,10 +235,9 @@
                 Console.WriteLine("Pls enter position : ");
                 string position = Console.ReadLine()!;
 
-                if (IsValidPhoneNumber(position))
-                {
+                if (IsValidPosition(position))
                     return position;
-                }
+                
 
                 Console.WriteLine("Some information is not correnct");
             }
@@ -287,7 +280,6 @@
 
         static decimal GetAndValidateMonthlySalary()
         {
-
             while (true)
             {
                 Console.WriteLine("Pls enter monthly salary : ");
@@ -295,10 +287,8 @@
 
                 //Early return 
                 if (IsLengthBetween(amount, 1500, 5000))
-                {
                     return amount;
-                }
-
+                
                 Console.WriteLine("Some information is not correnct");
             }
         }
@@ -309,7 +299,7 @@
 
         static bool IsValidName(string name, int minLength, int maxLenght)
         {
-            if (IsLengthBetween(name, minLength, maxLenght))
+            if (!IsLengthBetween(name, minLength, maxLenght))
             {
                 return false;
             }
@@ -323,7 +313,7 @@
 
             for (int i = 1; i < name.Length; i++)
             {
-                if (!IsUpperLetter(name[i]))
+                if (IsUpperLetter(name[i]))
                 {
                     return false;
                 }
