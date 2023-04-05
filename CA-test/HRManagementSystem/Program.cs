@@ -1,11 +1,26 @@
 ﻿namespace HRManagementSystem
 {
+    //custom type
+    public class Person
+    {
+        //fields (data)
+        public string _firstName;
+        public string _lastName;
+        public string _fatherName;
+        //public int _age;
+        //public string _pin;
+        //public string _phoneNumber;
+        //public string _position;
+        //public decimal _montlySalary;
+    }
+
     public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Person's count : ");
             int count = int.Parse(Console.ReadLine()!);
+            Person[] persons = new Person[count];
 
             int i = 0;
 
@@ -14,16 +29,57 @@
                 string firstName = GetAndValidateFirstName();
                 string lastName = GetAndValidateLastName();
                 string fatherName = GetAndValidateFatherName();
-                int age = GetAndValidateAge();
-                string pin = GetAndValidatePin();
-                string phoneNumber = GetAndValidatePhoneNumber();
-                string position = GetAndValidatePosition();
-                decimal monthlySalary = GetAndValidateMonthlySalary(); 
-               
+                //int age = GetAndValidateAge();
+                //string pin = GetAndValidatePin();
+                //string phoneNumber = GetAndValidatePhoneNumber();
+                //string position = GetAndValidatePosition();
+                //decimal monthlySalary = GetAndValidateMonthlySalary();
+
+                Person human = new Person
+                {
+                    _firstName = firstName,
+                    _lastName = lastName,
+                    _fatherName = fatherName,
+                    //_age = age,
+                    //_pin = pin,
+                    //_phoneNumber = phoneNumber,
+                    //_position = position,
+                    //_montlySalary = monthlySalary
+                };
+
+                persons[i] = human;
+
+                //firstNames[i] = firstName;
+                //lastNames[i] = lastName;
+                //fatherNames[i] = fatherName;
+                //ages[i] = age;
+                //pins[i] = pin;
+                //phoneNumbers[i] = phoneNumber;
+                //positions[i] = position;
+                //monthlySalaries[i] = monthlySalary;
 
                 Console.WriteLine($"Məlumat Sistemə əlavə olundu");
 
                 i++;
+            }
+
+            PrintPersonsInfo(persons);
+        }
+
+        public static void PrintPersonsInfo(Person[] people)
+        {
+            for (int k = 0; k < people.Length; k++)
+            {
+                Console.WriteLine($"First name : {people[k]._firstName}");
+                Console.WriteLine($"Last name : {people[k]._lastName}");
+                Console.WriteLine($"Father name : {people[k]._fatherName}");
+
+                //Console.WriteLine($"Age : {persons[k]}");
+                //Console.WriteLine($"Pin : {persons[k]}");
+                //Console.WriteLine($"Phone number : {persons[k]}");
+                //Console.WriteLine($"Position : {persons[k]}");
+                //Console.WriteLine($"Monthly salary : {persons[k]}");
+                //Console.WriteLine();
             }
         }
 
@@ -136,7 +192,7 @@
 
                 if (IsValidPin(pin))
                     return pin;
-                
+
                 Console.WriteLine("Some information is not correnct");
             }
         }
@@ -237,7 +293,7 @@
 
                 if (IsValidPosition(position))
                     return position;
-                
+
 
                 Console.WriteLine("Some information is not correnct");
             }
@@ -288,7 +344,7 @@
                 //Early return 
                 if (IsLengthBetween(amount, 1500, 5000))
                     return amount;
-                
+
                 Console.WriteLine("Some information is not correnct");
             }
         }
