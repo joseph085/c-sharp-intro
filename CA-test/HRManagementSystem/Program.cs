@@ -214,6 +214,10 @@ namespace HRManagementSystem
 
     public class Utility
     {
+        public char[] _uppercaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                                        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        public char[] _numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
         #region Utility
 
         public bool TryParse(string text, out int number)
@@ -302,10 +306,7 @@ namespace HRManagementSystem
         }
         public bool IsUpperLetter(char letter)
         {
-            char[] uppercaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-                                        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-
-            foreach (char uppercaseLetter in uppercaseLetters) //while LOOP
+            foreach (char uppercaseLetter in _uppercaseLetters) //while LOOP
             {
                 if (uppercaseLetter == letter)
                 {
@@ -339,9 +340,7 @@ namespace HRManagementSystem
         }
         public bool IsDigit(char digit)
         {
-            char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-            foreach (char number in numbers) //Compiled to while LOOP in IL
+            foreach (char number in _numbers) //Compiled to while LOOP in IL
             {
                 if (digit == number)
                 {
