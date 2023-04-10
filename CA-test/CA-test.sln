@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CA-test", "CA-test\CA-test.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManagementSystem", "HRManagementSystem\HRManagementSystem.csproj", "{B8BEE75F-8171-42F4-BBFF-ED92CC48F9EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLesson", "NewLesson\NewLesson.csproj", "{A9B44A6A-99DD-4724-B510-C9E05E640135}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewLesson", "NewLesson\NewLesson.csproj", "{A9B44A6A-99DD-4724-B510-C9E05E640135}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "Authentication\Authentication.csproj", "{07C6DAF8-3C78-4724-9E50-962CF4FEFBEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A9B44A6A-99DD-4724-B510-C9E05E640135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9B44A6A-99DD-4724-B510-C9E05E640135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9B44A6A-99DD-4724-B510-C9E05E640135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07C6DAF8-3C78-4724-9E50-962CF4FEFBEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C6DAF8-3C78-4724-9E50-962CF4FEFBEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07C6DAF8-3C78-4724-9E50-962CF4FEFBEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07C6DAF8-3C78-4724-9E50-962CF4FEFBEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
