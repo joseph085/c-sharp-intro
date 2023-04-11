@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace Authentication.Utilities
 {
-   
-
     public class StringUtility
     {
-        public char[] _uppercaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        //implicitly private access modifier
+        char[] _uppercaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                                         'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+        //explicitly private access modifier
         public char[] _numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
         #region Utility
-        
+
         public bool IsStartsWith(string text, string startText)
         {
+            if (text == null)
+                throw new Exception("Text can't be null");
+
+            if (startText == null)
+                throw new Exception("start text can't be null");
+
+
             if (startText.Length > text.Length)
             {
                 return false;

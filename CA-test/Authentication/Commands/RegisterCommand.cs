@@ -104,6 +104,7 @@ namespace Authentication.Commands
 
             while (true)
             {
+
                 Console.WriteLine("Pls enter email : ");
                 string email = Console.ReadLine()!;
                 //Way 1

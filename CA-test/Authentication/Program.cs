@@ -1,8 +1,11 @@
 ﻿using Authentication.Commands;
 using Authentication.Database;
+using Authentication.Utilities;
 
 namespace Authentication
 {
+    //Encapsulaiton
+
     public class Program
     {
         static void Main(string[] args)
