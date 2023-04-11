@@ -10,14 +10,14 @@ namespace Authentication.Commands
             string email = Console.ReadLine()!;
             string password = Console.ReadLine()!;
 
-            foreach (User user in database._users) //fully qualified namespace
+            foreach (User user in database.Users) //fully qualified namespace
             {
-                if (user._email == email && user._password == password)
+                if (user.Email == email && user.Password == password)
                 {
-                    if (user._isAdmin)
+                    if (user.IsAdmin)
                         Console.WriteLine("Hello dear admin");
                     else
-                        Console.WriteLine($"Hello! : {user._email} {user._password}");
+                        Console.WriteLine($"Hello! : {user.Email} {user.Password}");
                 }
             }
 

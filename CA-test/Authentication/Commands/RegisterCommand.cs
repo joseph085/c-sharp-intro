@@ -11,23 +11,23 @@ namespace Authentication.Commands
 {
     public class RegisterCommand
     {
-        public StringUtility _utility = new StringUtility();
+        private StringUtility _utility = new StringUtility();
 
         public void Handle(DataContext database)
         {
             string firstName = GetAndValidateFirstName();
             string lastName = GetAndValidateLastName();
             string password = GetAndValidatePassword();
-            string email = GetAndValidateEmail(database._users);
+            string email = GetAndValidateEmail(database.Users);
 
             User human = new User(firstName, lastName, password, email);
 
-            database._users.Add(human);
+            database.Users.Add(human);
         }
 
         #region First name
 
-        string GetAndValidateFirstName()
+        private string GetAndValidateFirstName()
         {
             while (true)
             {
@@ -40,7 +40,7 @@ namespace Authentication.Commands
                 Console.WriteLine("Some information is not correnct");
             }
         }
-        bool IsValidFirstName(string firstName)
+        private bool IsValidFirstName(string firstName)
         {
             int MIN_LENGTH = 3;
             int MAX_LENGTH = 30;
@@ -52,7 +52,7 @@ namespace Authentication.Commands
 
         #region Last name
 
-        string GetAndValidateLastName()
+        private string GetAndValidateLastName()
         {
             while (true)
             {
@@ -65,7 +65,7 @@ namespace Authentication.Commands
                 Console.WriteLine("Some information is not correnct");
             }
         }
-        bool IsValidLastName(string lastName)
+        private bool IsValidLastName(string lastName)
         {
             int MIN_LENGTH = 5;
             int MAX_LENGTH = 20;
@@ -77,7 +77,7 @@ namespace Authentication.Commands
 
         #region Password
 
-        string GetAndValidatePassword()
+        private string GetAndValidatePassword()
         {
             while (true)
             {
@@ -98,7 +98,7 @@ namespace Authentication.Commands
 
         #region Password
 
-        string GetAndValidateEmail(List<User> users)
+        private string GetAndValidateEmail(List<User> users)
         {
             char AT_SIGN = '@';
 
@@ -147,12 +147,11 @@ namespace Authentication.Commands
 
             }
         }
-
-        public bool IsEmailExists(List<User> users, string email)
+        private bool IsEmailExists(List<User> users, string email)
         {
             foreach (User user in users)
             {
-                if (user._email == email)
+                if (user.Email == email)
                 {
                     return true;
                 }
@@ -165,7 +164,7 @@ namespace Authentication.Commands
 
         #region Common
 
-        bool IsValidName(string name, int minLength, int maxLenght)
+        private bool IsValidName(string name, int minLength, int maxLenght)
         {
             if (!_utility.IsLengthBetween(name, minLength, maxLenght))
             {

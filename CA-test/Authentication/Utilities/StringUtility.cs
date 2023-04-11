@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,11 +10,10 @@ namespace Authentication.Utilities
     public class StringUtility
     {
         //implicitly private access modifier
-        char[] _uppercaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-                                        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-        //explicitly private access modifier
-        public char[] _numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        public char[] UppercaseLetters { get;  } = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                                    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        public char[] Numbers { get; } = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
         #region Utility
 
@@ -88,7 +88,7 @@ namespace Authentication.Utilities
 
         public bool IsUpperLetter(char letter)
         {
-            foreach (char uppercaseLetter in _uppercaseLetters) //while LOOP
+            foreach (char uppercaseLetter in UppercaseLetters) //while LOOP
             {
                 if (uppercaseLetter == letter)
                 {
@@ -122,7 +122,7 @@ namespace Authentication.Utilities
         }
         public bool IsDigit(char digit)
         {
-            foreach (char number in _numbers) //Compiled to while LOOP in IL
+            foreach (char number in Numbers) //Compiled to while LOOP in IL
             {
                 if (digit == number)
                 {

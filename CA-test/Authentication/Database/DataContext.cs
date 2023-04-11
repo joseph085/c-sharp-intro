@@ -9,17 +9,16 @@ namespace Authentication.Database
 {
     public class DataContext
     {
-        public List<User> _users = new List<User>();
+        public List<User> Users { get; set; } = new List<User>();
 
         public DataContext()
         {
             AddUserSeeedings();
         }
 
-        public void AddUserSeeedings()
+        private void AddUserSeeedings()
         {
-            _users.Add(new User("Super", "Admin", "123321", "admin@gmail.com", true));
+            Users.Add(new User("Super", "Admin", "123321", "admin@gmail.com", true));
         }
     }
-
 }
