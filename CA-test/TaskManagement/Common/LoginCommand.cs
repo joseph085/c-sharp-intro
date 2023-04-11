@@ -19,7 +19,7 @@ namespace TaskManagement.Common
                     if (user.IsAdmin)
                     {
                         AdminDashboard adminDashboard = new AdminDashboard();
-                        adminDashboard.Introduction();
+                        adminDashboard.Introduction(database);
                     }
                     else
                     {

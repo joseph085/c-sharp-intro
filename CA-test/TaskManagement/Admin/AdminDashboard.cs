@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Admin.Commands;
+using TaskManagement.Database;
 
 namespace TaskManagement.Admin
 {
     public class AdminDashboard
     {
-        public void Introduction()
+        public void Introduction(DataContext dataContexts)
         {
             Console.WriteLine("Hello dear admin");
 
@@ -21,7 +22,7 @@ namespace TaskManagement.Admin
                 {
                     case "/add-user":
                         AddUserCommand addUserCommand = new AddUserCommand();
-                        addUserCommand.Handle();
+                        addUserCommand.Handle(dataContexts);
                         break;
                     case "/logout":
                         Console.WriteLine("Bye-bye");
