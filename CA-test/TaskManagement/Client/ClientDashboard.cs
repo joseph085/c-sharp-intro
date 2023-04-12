@@ -9,7 +9,7 @@ namespace TaskManagement.Client
 {
     public class ClientDashboard
     {
-        public void Introduction(User user)
+        public static void Introduction(User user)
         {
             Console.WriteLine($"Hello! : {user.Email} {user.Password}");
 

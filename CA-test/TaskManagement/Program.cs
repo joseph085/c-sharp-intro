@@ -9,8 +9,6 @@ namespace TaskManagement
     {
         static void Main(string[] args)
         {
-            DataContext database = new DataContext();
-
             while (true)
             {
                 string command = Console.ReadLine()!;
@@ -18,12 +16,10 @@ namespace TaskManagement
                 switch (command)
                 {
                     case "/register":
-                        RegisterCommand registerCommand = new RegisterCommand();
-                        registerCommand.Handle(database);
+                        RegisterCommand.Handle();
                         break;
                     case "/login":
-                        LoginCommand loginCommand = new LoginCommand();
-                        loginCommand.Handle(database);
+                        LoginCommand.Handle();
                         break;
                     case "/exit":
                         Console.WriteLine("Bye-bye");

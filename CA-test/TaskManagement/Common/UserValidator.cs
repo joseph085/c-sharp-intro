@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement.Database;
 using TaskManagement.Database.Models;
 using TaskManagement.Utilities;
 
@@ -86,7 +87,7 @@ namespace TaskManagement.Common
 
         #region Email
 
-        public string GetAndValidateEmail(List<User> users)
+        public string GetAndValidateEmail()
         {
             char AT_SIGN = '@';
 
@@ -123,21 +124,21 @@ namespace TaskManagement.Common
                 //    return email;
 
                 //Way 3
-                //if (_utility.Contains(email, AT_SIGN))
-                //{
-                //    if (!IsEmailExists(users, email))
-                //        return email;
-                //    else
-                //        Console.WriteLine("Your email is already used in system, pls try another email");
-                //}
-                //else
-                //    Console.WriteLine("Ensure that your email contains @ characheter");
+                if (_utility.Contains(email, AT_SIGN))
+                {
+                    if (!IsEmailExists(email))
+                        return email;
+                    else
+                        Console.WriteLine("Your email is already used in system, pls try another email");
+                }
+                else
+                    Console.WriteLine("Ensure that your email contains @ characheter");
 
             }
         }
-        private bool IsEmailExists(List<User> users, string email)
+        private bool IsEmailExists(string email)
         {
-            foreach (User user in users)
+            foreach (User user in DataContext.Users)
             {
                 if (user.Email == email)
                 {

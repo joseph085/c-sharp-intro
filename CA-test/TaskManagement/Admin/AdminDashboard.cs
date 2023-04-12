@@ -10,7 +10,7 @@ namespace TaskManagement.Admin
 {
     public class AdminDashboard
     {
-        public void Introduction(DataContext dataContexts)
+        public static void Introduction()
         {
             Console.WriteLine("Hello dear admin");
 
@@ -21,8 +21,7 @@ namespace TaskManagement.Admin
                 switch (command)
                 {
                     case "/add-user":
-                        AddUserCommand addUserCommand = new AddUserCommand();
-                        addUserCommand.Handle(dataContexts);
+                        AddUserCommand.Handle();
                         break;
                     case "/logout":
                         Console.WriteLine("Bye-bye");
