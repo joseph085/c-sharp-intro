@@ -20,5 +20,15 @@
             Email = email;
             IsAdmin = isAdmin;
         }
+
+        public string GetShortInfo()
+        {
+            return $"Id : {Id}, Full name : {Name} {LastName}, Email : {Email}, Is admin : {GetIsAdminInfo()}";
+        }
+
+        public string GetIsAdminInfo()
+        {
+            return IsAdmin ? "Yes" : "No"; 
+        }
     }
 }

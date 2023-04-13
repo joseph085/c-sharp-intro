@@ -20,6 +20,9 @@ namespace TaskManagement.Admin
 
                 switch (command)
                 {
+                    case "/show-users":
+                        ShowUsersCommand.Handle();
+                        break;
                     case "/add-user":
                         AddUserCommand.Handle();
                         break;
