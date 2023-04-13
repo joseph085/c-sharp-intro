@@ -23,6 +23,12 @@ namespace TaskManagement.Admin
                     case "/show-users":
                         ShowUsersCommand.Handle();
                         break;
+                    case "/show-user-by-email":
+                        ShowUserByEmailCommand.Handle();
+                        break;
+                    case "/show-user-by-id":
+                        ShowUserByIdCommand.Handle();
+                        break;
                     case "/add-user":
                         AddUserCommand.Handle();
                         break;
