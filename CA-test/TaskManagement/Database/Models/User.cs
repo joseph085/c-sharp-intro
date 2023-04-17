@@ -31,5 +31,10 @@
         {
             return IsAdmin ? "Yes" : "No"; 
         }
+
+        public string GetFullName()
+        {
+            return $"{Name} {LastName}";
+        }
     }
 }
