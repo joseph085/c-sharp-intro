@@ -12,6 +12,7 @@
 
         static User()
         {
+
             Console.WriteLine("Intor");
         }
 
@@ -44,19 +45,23 @@
     {
         static void Main(string[] args)
         {
-            int number = 20;
+            List<User> users = new List<User>();
+
+            users.Add(null);
+
+            //int number = 20;
 
 
-            User firstUser = new User("Mahmood", "Garibov", "qaribov@gmail.com", "12331");
-            User.Print();
-            User.Print();
-            User.Print();
-            User.Print();
-            User.Print();
+            //User firstUser = new User("Mahmood", "Garibov", "qaribov@gmail.com", "12331");
+            //User.Print();
+            //User.Print();
+            //User.Print();
+            //User.Print();
+            //User.Print();
 
 
 
-            firstUser = new User("Eldar", "Vagif", "qaribov3@gmail.com", "12331"); 
+            //firstUser = new User("Eldar", "Vagif", "qaribov3@gmail.com", "12331"); 
 
         
 
