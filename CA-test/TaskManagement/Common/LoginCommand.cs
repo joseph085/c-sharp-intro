@@ -2,6 +2,7 @@
 using TaskManagement.Client;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Services;
 
 namespace TaskManagement.Common
 {
@@ -18,13 +19,14 @@ namespace TaskManagement.Common
 
                 if (user.Email == email && user.Password == password)
                 {
+                    UserService.CurrentUser = user;
                     if (user.IsAdmin)
                     {
                         AdminDashboard.Introduction();
                     }
                     else
                     {
-                        ClientDashboard.Introduction(user);
+                        ClientDashboard.Introduction();
                     }
                 }
             }

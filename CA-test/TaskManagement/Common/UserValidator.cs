@@ -136,7 +136,7 @@ namespace TaskManagement.Common
 
             }
         }
-        private bool IsEmailExists(string email)
+        public bool IsEmailExists(string email)
         {
             foreach (User user in DataContext.Users)
             {
