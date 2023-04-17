@@ -1,5 +1,6 @@
 ﻿using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Database.Repositories;
 using TaskManagement.Utilities;
 
 
@@ -9,6 +10,7 @@ namespace TaskManagement.Common
     {
         public static void Handle()
         {
+            UserRepository userRepository = new UserRepository();
             UserValidator userValidator = new UserValidator();
 
             string firstName = userValidator.GetAndValidateFirstName();
@@ -17,8 +19,7 @@ namespace TaskManagement.Common
             string email = userValidator.GetAndValidateEmail();
 
             User human = new User(firstName, lastName, password, email);
-
-            DataContext.Users.Add(human);
+            userRepository.Insert(human);
         }
     }
 }

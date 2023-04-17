@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskManagement.Common;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Database.Repositories;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -13,9 +14,12 @@ namespace TaskManagement.Admin.Commands
     {
         public static void Handle()
         {
+            UserRepository userRepository = new UserRepository();
+            List<User> users = userRepository.GetAll();
+
             int order = 1;
 
-            foreach (User user in DataContext.Users)
+            foreach (User user in users)
             {
                 Console.WriteLine($"{order}. {user.GetShortInfo()}");
                 order++;

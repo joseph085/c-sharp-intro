@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Database.Repositories;
 
 namespace TaskManagement.Admin.Commands
 {
@@ -12,22 +13,22 @@ namespace TaskManagement.Admin.Commands
     {
         public static void Handle()
         {
+            UserRepository userRepository = new UserRepository();
+
             while (true)
             {
                 try
                 {
                     int id = int.Parse(Console.ReadLine()!);
 
-                    foreach (User user in DataContext.Users)
+                    User user = userRepository.GetUserOrDefaultById(id);
+                    if (user == null)
                     {
-                        if (user.Id == id)
-                        {
-                            Console.WriteLine(user.GetShortInfo());
-                            return;
-                        }
+                        Console.WriteLine("Email not found");
+                        continue;
                     }
 
-                    Console.WriteLine("Email not found");
+                    Console.WriteLine(user.GetShortInfo());
                 }
                 catch 
                 {

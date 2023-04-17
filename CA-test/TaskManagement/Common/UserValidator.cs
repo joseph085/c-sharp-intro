@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Database.Repositories;
 using TaskManagement.Utilities;
 
 namespace TaskManagement.Common
@@ -138,7 +139,9 @@ namespace TaskManagement.Common
         }
         public bool IsEmailExists(string email)
         {
-            foreach (User user in DataContext.Users)
+            UserRepository userRepository = new UserRepository();
+            List<User> users = userRepository.GetAll();
+            foreach (User user in users)
             {
                 if (user.Email == email)
                 {

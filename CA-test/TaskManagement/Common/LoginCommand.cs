@@ -2,6 +2,7 @@
 using TaskManagement.Client;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
+using TaskManagement.Database.Repositories;
 using TaskManagement.Services;
 
 namespace TaskManagement.Common
@@ -12,10 +13,12 @@ namespace TaskManagement.Common
         {
             string email = Console.ReadLine()!;
             string password = Console.ReadLine()!;
+            UserRepository userRepository = new UserRepository();
+            List<User> users = userRepository.GetAll(); 
 
-            for (int i = 0; i < DataContext.Users.Count; i++)
+            for (int i = 0; i < users.Count; i++)
             {
-                User user = DataContext.Users[i];
+                User user = users[i];
 
                 if (user.Email == email && user.Password == password)
                 {

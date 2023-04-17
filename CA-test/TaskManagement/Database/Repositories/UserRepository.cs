@@ -9,6 +9,16 @@ namespace TaskManagement.Database.Repositories
 {
     public class UserRepository
     {
+        public List<User> GetAll()
+        {
+            return DataContext.Users;
+        }
+
+        public void Insert(User user)
+        {
+            DataContext.Users.Add(user);
+        }
+
         public User GetUserOrDefaultByEmail(string email)
         {
             foreach (User user in DataContext.Users)
