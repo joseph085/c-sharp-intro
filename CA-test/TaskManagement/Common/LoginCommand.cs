@@ -19,15 +19,18 @@ namespace TaskManagement.Common
 
                 if (user.Email == email && user.Password == password)
                 {
+                    if (user.IsBanned)
+                    {
+                        Console.WriteLine("Your account is banned, you can't join");
+                        return;
+                    }
+                    
                     UserService.CurrentUser = user;
+
                     if (user.IsAdmin)
-                    {
                         AdminDashboard.Introduction();
-                    }
                     else
-                    {
                         ClientDashboard.Introduction();
-                    }
                 }
             }
         }
