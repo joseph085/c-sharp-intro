@@ -41,6 +41,5 @@ namespace TaskManagement.Admin
                 }
             }
         }
-
     }
 }
