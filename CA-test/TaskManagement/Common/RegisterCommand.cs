@@ -17,8 +17,11 @@ namespace TaskManagement.Common
             string lastName = userValidator. GetAndValidateLastName();
             string password = userValidator.GetAndValidatePassword();
             string email = userValidator.GetAndValidateEmail();
+            DateTime dateTime = DateTime.Now;
+
 
             User human = new User(firstName, lastName, password, email);
+            Console.WriteLine($"Succesfully registered {human.Name}, {human.LastName} , {human.Created}");
             userRepository.Insert(human);
         }
     }

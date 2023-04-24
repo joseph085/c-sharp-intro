@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TaskManagement.Database.Models;
 
@@ -61,5 +62,10 @@ namespace TaskManagement.Database.Repositories
         {
             DataContext.Users.Remove(user);
         }
+
+        //public void Regex( Regex regex)
+        //{
+        //    DataContext.Users.
+        //}
     }
 }

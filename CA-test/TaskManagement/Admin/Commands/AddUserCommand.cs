@@ -21,6 +21,12 @@ namespace TaskManagement.Admin.Commands
             string lastName = userValidator.GetAndValidateLastName();
             string password = userValidator.GetAndValidatePassword();
             string email = userValidator.GetAndValidateEmail();
+            //string createDatetime = userValidator.GetAndcreateDatetime();
+            //string emailPattern = @"^[a-zA-Z0-9]{10,30}@code\.edu\.az$";
+            //string datePattern = @"^([1-9]|0[1-9]|1[012])[/]([1-9]|0[1-9]|[12][0-9]|3[01])[/](19|20)\d\d$";
+
+
+
 
             User human = new User(firstName, lastName, password, email);
 

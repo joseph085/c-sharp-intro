@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TaskManagement.Database;
 using TaskManagement.Database.Models;
@@ -27,7 +28,7 @@ namespace TaskManagement.Common
                 if (IsValidFirstName(firstName))
                     return firstName;
 
-                Console.WriteLine("Some information is not correnct");
+                Console.WriteLine("Some information is not correct");
             }
         }
         private bool IsValidFirstName(string firstName)
@@ -125,22 +126,26 @@ namespace TaskManagement.Common
                 //    return email;
 
                 //Way 3
-                if (_utility.Contains(email, AT_SIGN))
+
+                if (IsValidEmail(email))
                 {
                     if (!IsEmailExists(email))
                         return email;
                     else
-                        Console.WriteLine("Your email is already used in system, pls try another email");
+                        Console.WriteLine("Email already exsists");
                 }
                 else
-                    Console.WriteLine("Ensure that your email contains @ characheter");
+                    Console.WriteLine("Ensure that your email has correct format");
+
 
             }
         }
+
         public bool IsEmailExists(string email)
         {
             UserRepository userRepository = new UserRepository();
             List<User> users = userRepository.GetAll();
+           
             foreach (User user in users)
             {
                 if (user.Email == email)
@@ -150,6 +155,17 @@ namespace TaskManagement.Common
             }
 
             return false;
+        }
+
+        public bool IsValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9]{10,30}@code\.edu\.az$";
+            bool correcteEmail = Regex.IsMatch(email, pattern);
+            if (!correcteEmail)
+            {
+                return false;
+            }
+            return true;
         }
 
         #endregion
@@ -182,5 +198,37 @@ namespace TaskManagement.Common
         }
 
         #endregion
+
+        // #region Datetime 
+       //public string GetAndcreateDatetime()
+        //{
+        //    DateTime dateTime = DateTime.Now;
+        //    DateTime myDate = new DateTime(2015, 12, 25, 10, 30, 45);
+        //    do 
+        //    {
+        //    int year = myDate.Year; // 2015  
+        //    int month = myDate.Month; //12  
+        //    int day = myDate.Day; // 25  
+        //    int hour = myDate.Hour; // 10  
+        //    int minute = myDate.Minute; // 30  
+        //    int second = myDate.Second; // 45  
+        //    int weekDay = (int)myDate.DayOfWeek; // 5 due to Friday 
+        //    }while (dateTime != myDate);
+
+
+        //    Console.WriteLine(DateTime.MinValue);
+        //    Console.WriteLine(DateTime.MaxValue);
+        //    Console.WriteLine(myDate);
+        //    return dateTime.ToString();
+        //}
+        
+
+
+
+
+
+
+
+        //#endregion 
     }
 }

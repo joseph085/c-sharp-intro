@@ -17,6 +17,7 @@ namespace TaskManagement.Client.Commands
             UserService.CurrentUser.Name = userValidator.GetAndValidateFirstName();
             UserService.CurrentUser.LastName = userValidator.GetAndValidateLastName();
             UserService.CurrentUser.Password = userValidator.GetAndValidatePassword();
+
         }
     }
 }

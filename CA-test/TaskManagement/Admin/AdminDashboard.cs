@@ -12,10 +12,15 @@ namespace TaskManagement.Admin
     {
         public static void Introduction()
         {
-            Console.WriteLine("Hello dear admin");
-
             while (true)
             {
+                Console.WriteLine("Hello dear admin");
+                Console.WriteLine("Enter the commands : ");
+                Console.WriteLine("/show-users");
+                Console.WriteLine("/show-user-by-id");
+                Console.WriteLine("add-user");
+                Console.WriteLine("/logout");
+                Console.WriteLine();
                 string command = Console.ReadLine()!;
 
                 switch (command)

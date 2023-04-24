@@ -11,8 +11,12 @@ namespace TaskManagement
         {
             while (true)
             {
+                Console.WriteLine("Adding command : ");
+                Console.WriteLine("/register");
+                Console.WriteLine("/login");
+                Console.WriteLine("/exit");
+                Console.WriteLine();
                 string command = Console.ReadLine()!;
-
                 switch (command)
                 {
                     case "/register":

@@ -12,6 +12,8 @@
         public bool IsAdmin { get; set; }
         public bool IsBanned { get; set; }
 
+        public DateTime Created { get; set; }
+
         public User(string name, string lastName, string password, string email, bool isAdmin = false)
         {
             Id = ++IdCounter;
@@ -20,6 +22,7 @@
             Password = password;
             Email = email;
             IsAdmin = isAdmin;
+            Created = DateTime.Now;
         }
 
         public string GetShortInfo()

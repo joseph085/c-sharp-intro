@@ -11,7 +11,9 @@ namespace TaskManagement.Common
     {
         public static void Handle() //use alias
         {
+            Console.Write("Enter the Mail :");
             string email = Console.ReadLine()!;
+            Console.Write("Enter the Password :");
             string password = Console.ReadLine()!;
             UserRepository userRepository = new UserRepository();
             List<User> users = userRepository.GetAll(); 
